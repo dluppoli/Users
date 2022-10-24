@@ -11,11 +11,34 @@ namespace UsersWinForms.Controllers
 {
     internal static class Users
     {
+        private static List<User> _users;
         public static List<User> GetAll()
         {
-            string json = File.ReadAllText(@".\Models\database.json");
+            if (_users == null)
+            {
+                string json = File.ReadAllText(@".\Models\database.json");
+                _users = JsonConvert.DeserializeObject<List<User>>(json);
+            }
+            return _users;
+        }
 
-            return JsonConvert.DeserializeObject<List<User>>(json);
+        public static List<User> FindAll(Predicate<User> condizione)
+        {
+            return GetAll().FindAll(condizione);
+        }
+
+        public static User Find(Predicate<User> condizione)
+        {
+            return GetAll().Find(condizione);
+        }
+
+        public static void Add(User u)
+        {
+            GetAll().Add(u);
+        }
+        public static List<string> GetGenders()
+        {
+            return GetAll().Select(s => s.Gender).Distinct().ToList();
         }
 
         public static string[] FormatAsTable(List<User> users)
