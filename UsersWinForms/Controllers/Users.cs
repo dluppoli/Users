@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UsersWinForms.Models;
 
 namespace UsersWinForms.Controllers
@@ -66,6 +67,11 @@ namespace UsersWinForms.Controllers
         public static bool VerificaCredenziali(string u, string p)
         {
             return Find(q => q.Username.ToLower() == u.ToLower() && q.Password == p) != null;
+        }
+
+        public static bool InviaMailDiRecupero(string m)
+        {
+            return Find(u => u.Email.ToLower() == m.ToLower()) != null;
         }
     }
 }

@@ -37,7 +37,13 @@
             this.chkShowPassword = new System.Windows.Forms.CheckBox();
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.pnlPasswordDimenticata = new System.Windows.Forms.Panel();
+            this.btnPasswordDimenticata = new System.Windows.Forms.Button();
+            this.lblMail = new System.Windows.Forms.Label();
+            this.Mail = new System.Windows.Forms.TextBox();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.pnlLogin.SuspendLayout();
+            this.pnlPasswordDimenticata.SuspendLayout();
             this.SuspendLayout();
             // 
             // Titolo
@@ -116,6 +122,7 @@
             // 
             this.pnlLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLogin.Controls.Add(this.btnPasswordDimenticata);
             this.pnlLogin.Controls.Add(this.Username);
             this.pnlLogin.Controls.Add(this.chkShowPassword);
             this.pnlLogin.Controls.Add(this.lblUsername);
@@ -129,16 +136,69 @@
             // 
             // pnlPasswordDimenticata
             // 
-            this.pnlPasswordDimenticata.Location = new System.Drawing.Point(17, 233);
+            this.pnlPasswordDimenticata.Controls.Add(this.btnCancel);
+            this.pnlPasswordDimenticata.Controls.Add(this.btnOk);
+            this.pnlPasswordDimenticata.Controls.Add(this.Mail);
+            this.pnlPasswordDimenticata.Controls.Add(this.lblMail);
+            this.pnlPasswordDimenticata.Location = new System.Drawing.Point(14, 38);
             this.pnlPasswordDimenticata.Name = "pnlPasswordDimenticata";
-            this.pnlPasswordDimenticata.Size = new System.Drawing.Size(546, 250);
+            this.pnlPasswordDimenticata.Size = new System.Drawing.Size(546, 222);
             this.pnlPasswordDimenticata.TabIndex = 8;
+            // 
+            // btnPasswordDimenticata
+            // 
+            this.btnPasswordDimenticata.Location = new System.Drawing.Point(33, 128);
+            this.btnPasswordDimenticata.Name = "btnPasswordDimenticata";
+            this.btnPasswordDimenticata.Size = new System.Drawing.Size(148, 23);
+            this.btnPasswordDimenticata.TabIndex = 7;
+            this.btnPasswordDimenticata.Text = "Password Dimenticata?";
+            this.btnPasswordDimenticata.UseVisualStyleBackColor = true;
+            this.btnPasswordDimenticata.Click += new System.EventHandler(this.btnPasswordDimenticata_Click);
+            // 
+            // lblMail
+            // 
+            this.lblMail.AutoSize = true;
+            this.lblMail.Location = new System.Drawing.Point(35, 30);
+            this.lblMail.Name = "lblMail";
+            this.lblMail.Size = new System.Drawing.Size(307, 13);
+            this.lblMail.TabIndex = 0;
+            this.lblMail.Text = "Inserisci la tua mail. Ti invieremo una mail di recupero password.";
+            // 
+            // Mail
+            // 
+            this.Mail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Mail.Location = new System.Drawing.Point(38, 47);
+            this.Mail.Name = "Mail";
+            this.Mail.Size = new System.Drawing.Size(487, 20);
+            this.Mail.TabIndex = 1;
+            // 
+            // btnOk
+            // 
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOk.Location = new System.Drawing.Point(450, 83);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 2;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(38, 83);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "Annulla";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 495);
+            this.ClientSize = new System.Drawing.Size(575, 286);
             this.Controls.Add(this.pnlPasswordDimenticata);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.Titolo);
@@ -149,6 +209,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
+            this.pnlPasswordDimenticata.ResumeLayout(false);
+            this.pnlPasswordDimenticata.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -164,6 +226,11 @@
         private System.Windows.Forms.CheckBox chkShowPassword;
         private System.Windows.Forms.Panel pnlLogin;
         private System.Windows.Forms.Panel pnlPasswordDimenticata;
+        private System.Windows.Forms.Button btnPasswordDimenticata;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.TextBox Mail;
+        private System.Windows.Forms.Label lblMail;
     }
 }
 

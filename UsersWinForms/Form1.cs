@@ -40,7 +40,36 @@ namespace UsersWinForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pnlLogin.Visible = false;
+            pnlLogin.Visible = true;
+            pnlPasswordDimenticata.Visible = false;
+        }
+
+        private void btnPasswordDimenticata_Click(object sender, EventArgs e)
+        {
+            SwapPannelli();
+        }
+
+        private void SwapPannelli()
+        {
+            pnlLogin.Visible = !pnlLogin.Visible;
+            pnlPasswordDimenticata.Visible = !pnlPasswordDimenticata.Visible;
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            bool mailTrovata = Users.InviaMailDiRecupero(Mail.Text);
+            if(mailTrovata)
+            {
+                MessageBox.Show("Mail Inviata");
+                SwapPannelli();
+            }
+            else
+                MessageBox.Show("Mail non trovata");
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            SwapPannelli();
         }
     }
 }
