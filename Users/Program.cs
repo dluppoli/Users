@@ -17,12 +17,28 @@ namespace Users
             //PrintTable(maschi);
 
             //Stampare tutti gli utenti della california (state==CA)
-            //Stampare tutti gli utenti di origine giapponese (mail che finisce co jp)
-            //Stampare tutti gli utenti con password <= di 8 caratteri
-            //Contare quanti utenti sono nati nel 1979
-            //Stampare tutti gli utenti con età > di 50 anni (calcolata da BirthDate)
-            //Stampare tutti gli utenti che lavorano per amazon
+            List<User> californiano = users.FindAll(
 
+                //delegate (User u) { return u.Address.State == "CA"; }
+                //(u) => { return u.Address.State == "CA"; }
+                u => u.Address.State == "CA"
+                );
+
+
+            //Stampare tutti gli utenti di origine giapponese (mail che finisce con jp)
+            List<User> giapponesi = users.FindAll(u => u.Email.EndsWith(".jp"));
+
+            //Stampare tutti gli utenti con password <= di 8 caratteri
+            List<User> pwdDeboli = users.FindAll(u => u.Password.Length <= 8);
+
+            //Contare quanti utenti sono nati nel 1979
+            List<User> nati79 = users.FindAll(u => u.BirthDate.Year == 1979);
+
+            //Stampare tutti gli utenti con età > di 50 anni (calcolata da BirthDate)
+            List<User> cinquantenni = users.FindAll(u => (DateTime.Today - u.BirthDate).TotalDays >= 365 * 50);
+
+            //Stampare tutti gli utenti che lavorano per amazon
+            List<User> amazoniani = users.FindAll(u => u.Email.Contains("@amazon"));
 
             Console.ReadLine();
         }
