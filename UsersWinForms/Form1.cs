@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UsersWinForms.Controllers;
 
 namespace UsersWinForms
 {
@@ -15,6 +16,31 @@ namespace UsersWinForms
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(Username.Text);
+            //1 - Modificare il controller aggiungendo public bool VerificaCredenziali(string u, string p)
+
+            //2 - Chiamare il metodo VerificaCredenziali
+            bool ok = Users.VerificaCredenziali(Username.Text, Password.Text);
+
+            //3 - In base alla risposta visualizzare la msgbox opportuna
+            MessageBox.Show(ok ? "Login Corretto" : "Login Errato");
+        }
+
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPassword.Checked)
+                Password.PasswordChar = (char)0;
+            else
+                Password.PasswordChar = '*';
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            pnlLogin.Visible = false;
         }
     }
 }

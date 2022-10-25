@@ -62,5 +62,10 @@ namespace UsersWinForms.Controllers
             table[i++] = new String('-', 170);
             return table;
         }
+
+        public static bool VerificaCredenziali(string u, string p)
+        {
+            return Find(q => q.Username.ToLower() == u.ToLower() && q.Password == p) != null;
+        }
     }
 }
