@@ -16,6 +16,7 @@ namespace UsersWinForms.Controllers
         {
             if (_logins == null)
             {
+                if (!File.Exists(@".\Models\logins.json")) return new List<Login>();
                 string json = File.ReadAllText(@".\Models\logins.json");
                 _logins = JsonConvert.DeserializeObject<List<Login>>(json);
             }
