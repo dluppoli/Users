@@ -12,7 +12,7 @@ using UsersWinForms.Models;
 
 namespace UsersWinForms
 {
-    public partial class GestioneUtenti : Form
+    public partial class GestioneUtenti : UserControl
     {
         #region ViewModel
         public string SearchText 
