@@ -13,6 +13,7 @@ namespace UsersWinForms
 {
     public partial class LoginUserControl : UserControl
     {
+        public event EventHandler LoginSuccesful;
         public LoginUserControl()
         {
             InitializeComponent();
@@ -27,7 +28,11 @@ namespace UsersWinForms
             bool ok = Users.VerificaCredenziali(Username.Text, Password.Text);
 
             //3 - In base alla risposta visualizzare la msgbox opportuna
-            MessageBox.Show(ok ? "Login Corretto" : "Login Errato");
+            //MessageBox.Show(ok ? "Login Corretto" : "Login Errato");
+            if (!ok)
+                MessageBox.Show("Login Errato");
+            else
+                LoginSuccesful?.Invoke(this, EventArgs.Empty);
         }
 
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
