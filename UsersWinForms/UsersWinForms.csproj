@@ -64,7 +64,7 @@
       <DependentUpon>LoginUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="GestioneUtenti.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GestioneUtenti.Designer.cs">
       <DependentUpon>GestioneUtenti.cs</DependentUpon>

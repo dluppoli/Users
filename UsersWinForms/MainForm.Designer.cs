@@ -32,7 +32,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loginUserControl1 = new UsersWinForms.LoginUserControl();
+            this.gestioneUtenti = new UsersWinForms.GestioneUtenti();
+            this.loginUserControl = new UsersWinForms.LoginUserControl();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,35 +59,47 @@
             // logoutMenuItem
             // 
             this.logoutMenuItem.Name = "logoutMenuItem";
-            this.logoutMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutMenuItem.Text = "Logout";
             this.logoutMenuItem.Click += new System.EventHandler(this.logoutMenuItem_Click);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
-            // loginUserControl1
+            // gestioneUtenti
             // 
-            this.loginUserControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginUserControl1.Location = new System.Drawing.Point(143, 99);
-            this.loginUserControl1.Name = "loginUserControl1";
-            this.loginUserControl1.Size = new System.Drawing.Size(575, 286);
-            this.loginUserControl1.TabIndex = 1;
+            this.gestioneUtenti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gestioneUtenti.Location = new System.Drawing.Point(0, 27);
+            this.gestioneUtenti.Name = "gestioneUtenti";
+            this.gestioneUtenti.Size = new System.Drawing.Size(864, 467);
+            this.gestioneUtenti.TabIndex = 2;
+            // 
+            // loginUserControl
+            // 
+            this.loginUserControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.loginUserControl.Location = new System.Drawing.Point(143, 99);
+            this.loginUserControl.Name = "loginUserControl";
+            this.loginUserControl.Size = new System.Drawing.Size(575, 286);
+            this.loginUserControl.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 488);
-            this.Controls.Add(this.loginUserControl1);
+            this.Controls.Add(this.loginUserControl);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.gestioneUtenti);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -100,6 +113,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
-        private LoginUserControl loginUserControl1;
+        private LoginUserControl loginUserControl;
+        private GestioneUtenti gestioneUtenti;
     }
 }
