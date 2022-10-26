@@ -8,14 +8,84 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UsersWinForms.Controllers;
+using UsersWinForms.Models;
 
 namespace UsersWinForms
 {
     public partial class GestioneUtenti : Form
     {
+        #region ViewModel
+        public string SearchText 
+        {
+            get
+            {
+                return txtNome.Text;
+            }
+            set
+            {
+                txtNome.Text = value;   
+            }
+        }
+
+        public string SearchSex
+        {
+            get
+            {
+                return (string)(cmbSesso.SelectedItem);
+            }
+        }
+
+        public int SearchSexIndex
+        {
+            get
+            {
+                return cmbSesso.SelectedIndex;
+            }
+            set
+            {
+                cmbSesso.SelectedIndex = value;
+            }
+        }
+
+        public List<string> Genders 
+        { 
+            get
+            {
+                return (List<string>)(cmbSesso.DataSource);
+            }
+            set
+            {
+                cmbSesso.DataSource = value;
+            } 
+        }
+
+        private List<User> _usersList;
+        public List<User> UsersList
+        {
+            get
+            {
+                //return (List<User>)(gridUtenti.DataSource);
+                return _usersList;
+            }
+            set
+            {
+                _usersList = value;
+                gridUtenti.DataSource = value;
+            }
+        }
+        #endregion
+
         public GestioneUtenti()
         {
             InitializeComponent();
+        }
+
+        private void LoadGridData()
+        {
+            UsersList = Users.FindAll(u =>
+                (u.FirstName.Contains(SearchText) || u.LastName.Contains(SearchText)) &&
+                (SearchSex == null || u.Gender == SearchSex)
+            );
         }
         private void GestioneUtenti_Load(object sender, EventArgs e)
         {
@@ -23,19 +93,39 @@ namespace UsersWinForms
             //foreach (string gender in genders)
             //    cmbSesso.Items.Add(gender);
 
-            cmbSesso.DataSource = Users.GetGenders();
-            gridUtenti.DataSource = Users.GetAll();
+            Genders = Users.GetGenders();
+            SearchSexIndex = -1;
 
-            cmbSesso.SelectedIndex = -1;
+            //gridUtenti.DataSource = Users.GetAll();
+            LoadGridData();
             gridUtenti.Columns["Password"].Visible = false;
+
+            //UsersList.Add(new User { Id = 1000 });
+            //Users.Add(new User { Id = 100, FirstName="Marco", LastName="Rossi", Gender="male" });
+            //LoadGridData();
+
         }
 
         private void btnFiltra_Click(object sender, EventArgs e)
         {
-            gridUtenti.DataSource = Users.FindAll(u =>
-                ( u.FirstName.Contains(txtNome.Text) || u.LastName.Contains(txtNome.Text) ) &&
-                ( cmbSesso.SelectedItem == null || u.Gender==(string)(cmbSesso.SelectedItem) )
-            );
+            LoadGridData();
+        }
+
+        private void cmbSesso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGridData();
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+            LoadGridData();
+        }
+
+        private void bntPulisciFiltri_Click(object sender, EventArgs e)
+        {
+            SearchText = "";
+            SearchSexIndex = -1;
+            LoadGridData();
         }
     }
 }

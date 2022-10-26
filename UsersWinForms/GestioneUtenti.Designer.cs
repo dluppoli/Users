@@ -59,6 +59,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(523, 20);
             this.txtNome.TabIndex = 2;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // cmbSesso
             // 
@@ -68,6 +69,7 @@
             this.cmbSesso.Name = "cmbSesso";
             this.cmbSesso.Size = new System.Drawing.Size(161, 21);
             this.cmbSesso.TabIndex = 3;
+            this.cmbSesso.SelectedIndexChanged += new System.EventHandler(this.cmbSesso_SelectedIndexChanged);
             // 
             // btnFiltra
             // 
@@ -89,6 +91,7 @@
             this.bntPulisciFiltri.TabIndex = 5;
             this.bntPulisciFiltri.Text = "Azzera filtri";
             this.bntPulisciFiltri.UseVisualStyleBackColor = true;
+            this.bntPulisciFiltri.Click += new System.EventHandler(this.bntPulisciFiltri_Click);
             // 
             // lblNome
             // 

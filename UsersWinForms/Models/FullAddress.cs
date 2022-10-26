@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsersWinForms.Models
 {
-    internal class FullAddress
+    public class FullAddress
     {
         public string Address { get; set; }
         public string City { get; set; }
