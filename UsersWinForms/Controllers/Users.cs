@@ -37,6 +37,24 @@ namespace UsersWinForms.Controllers
         {
             GetAll().Add(u);
         }
+
+        public static bool Update(int id, User u)
+        {
+            if (u.Id != id) return false;
+            User candidate = Find(q => q.Id == id);
+            if (candidate == null) return false;
+
+            candidate.FirstName = u.FirstName;
+            candidate.LastName = u.LastName;
+            candidate.Age = u.Age;
+            candidate.Email = u.Email;
+            candidate.Username = u.Username;
+            candidate.Password = u.Password;
+            candidate.BirthDate = u.BirthDate;
+            candidate.Gender = u.Gender;
+
+            return true;
+        }
         public static List<string> GetGenders()
         {
             return GetAll().Select(s => s.Gender).Distinct().ToList();

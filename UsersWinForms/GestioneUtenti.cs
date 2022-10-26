@@ -134,5 +134,13 @@ namespace UsersWinForms
             edit.ShowDialog();
             LoadGridData();
         }
+
+        private void gridUtenti_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            User u = UsersList[e.RowIndex];
+            EditUser edit = new EditUser(u);
+            edit.ShowDialog();
+            LoadGridData();
+        }
     }
 }

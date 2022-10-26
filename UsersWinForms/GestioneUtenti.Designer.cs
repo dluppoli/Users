@@ -136,8 +136,10 @@
             this.gridUtenti.MultiSelect = false;
             this.gridUtenti.Name = "gridUtenti";
             this.gridUtenti.ReadOnly = true;
+            this.gridUtenti.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridUtenti.Size = new System.Drawing.Size(771, 271);
             this.gridUtenti.TabIndex = 9;
+            this.gridUtenti.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridUtenti_CellDoubleClick);
             // 
             // GestioneUtenti
             // 
