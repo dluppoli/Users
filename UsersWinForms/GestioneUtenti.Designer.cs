@@ -64,6 +64,7 @@
             // cmbSesso
             // 
             this.cmbSesso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbSesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSesso.FormattingEnabled = true;
             this.cmbSesso.Location = new System.Drawing.Point(546, 104);
             this.cmbSesso.Name = "cmbSesso";
