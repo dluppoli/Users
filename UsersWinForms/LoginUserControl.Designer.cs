@@ -1,6 +1,6 @@
 ﻿namespace UsersWinForms
 {
-    partial class Form1
+    partial class LoginUserControl
     {
         /// <summary>
         /// Required designer variable.
@@ -202,8 +202,6 @@
             this.Controls.Add(this.pnlPasswordDimenticata);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.Titolo);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

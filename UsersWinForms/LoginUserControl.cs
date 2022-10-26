@@ -11,9 +11,9 @@ using UsersWinForms.Controllers;
 
 namespace UsersWinForms
 {
-    public partial class Form1 : Form
+    public partial class LoginUserControl : UserControl
     {
-        public Form1()
+        public LoginUserControl()
         {
             InitializeComponent();
         }
