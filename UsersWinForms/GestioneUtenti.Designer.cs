@@ -121,6 +121,7 @@
             this.btnNuovo.TabIndex = 8;
             this.btnNuovo.Text = "Nuovo utente";
             this.btnNuovo.UseVisualStyleBackColor = true;
+            this.btnNuovo.Click += new System.EventHandler(this.btnNuovo_Click);
             // 
             // gridUtenti
             // 

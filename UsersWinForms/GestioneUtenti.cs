@@ -127,5 +127,12 @@ namespace UsersWinForms
             SearchSexIndex = -1;
             LoadGridData();
         }
+
+        private void btnNuovo_Click(object sender, EventArgs e)
+        {
+            EditUser edit = new EditUser();
+            edit.ShowDialog();
+            LoadGridData();
+        }
     }
 }
