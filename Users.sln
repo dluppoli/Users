@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "Users\Users.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersWinForms", "UsersWinForms\UsersWinForms.csproj", "{42BE1FBA-DF6F-4D5F-85A3-1D5EB8FA3BDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersWpf", "UsersWpf\UsersWpf.csproj", "{C332A4DE-8276-41C2-8E1E-E5128EFAF971}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlsAndEvents", "UserControlsAndEvents\UserControlsAndEvents.csproj", "{4E6C0D8E-F42A-433B-AF40-FE83135DB952}"
 EndProject
 Global
@@ -23,6 +25,10 @@ Global
 		{42BE1FBA-DF6F-4D5F-85A3-1D5EB8FA3BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42BE1FBA-DF6F-4D5F-85A3-1D5EB8FA3BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42BE1FBA-DF6F-4D5F-85A3-1D5EB8FA3BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C332A4DE-8276-41C2-8E1E-E5128EFAF971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C332A4DE-8276-41C2-8E1E-E5128EFAF971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C332A4DE-8276-41C2-8E1E-E5128EFAF971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C332A4DE-8276-41C2-8E1E-E5128EFAF971}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E6C0D8E-F42A-433B-AF40-FE83135DB952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E6C0D8E-F42A-433B-AF40-FE83135DB952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E6C0D8E-F42A-433B-AF40-FE83135DB952}.Release|Any CPU.ActiveCfg = Release|Any CPU
