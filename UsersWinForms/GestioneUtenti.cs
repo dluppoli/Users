@@ -89,6 +89,7 @@ namespace UsersWinForms
         }
         private void GestioneUtenti_Load(object sender, EventArgs e)
         {
+            if (Site != null && Site.DesignMode) return;
             //List<string> genders = Users.GetGenders();
             //foreach (string gender in genders)
             //    cmbSesso.Items.Add(gender);

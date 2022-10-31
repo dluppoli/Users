@@ -45,6 +45,7 @@ namespace UsersWinForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Site != null && Site.DesignMode) return;
             pnlLogin.Visible = true;
             pnlPasswordDimenticata.Visible = false;
         }

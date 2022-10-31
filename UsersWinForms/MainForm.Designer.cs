@@ -75,15 +75,19 @@
             this.gestioneUtenti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gestioneUtenti.Genders = null;
             this.gestioneUtenti.Location = new System.Drawing.Point(0, 27);
             this.gestioneUtenti.Name = "gestioneUtenti";
+            this.gestioneUtenti.SearchSexIndex = -1;
+            this.gestioneUtenti.SearchText = "";
             this.gestioneUtenti.Size = new System.Drawing.Size(864, 467);
             this.gestioneUtenti.TabIndex = 2;
+            this.gestioneUtenti.UsersList = null;
             // 
             // loginUserControl
             // 
             this.loginUserControl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginUserControl.Location = new System.Drawing.Point(143, 99);
+            this.loginUserControl.Location = new System.Drawing.Point(141, 99);
             this.loginUserControl.Name = "loginUserControl";
             this.loginUserControl.Size = new System.Drawing.Size(575, 286);
             this.loginUserControl.TabIndex = 1;
