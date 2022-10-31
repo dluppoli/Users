@@ -42,13 +42,41 @@ namespace UsersWinForms
         {
             loginUserControl.Visible = true;
             gestioneUtenti.Visible = false;
+            gestioneAccessiUserControl.Visible = false;
             logoutMenuItem.Enabled = false;
+            datiMenuItem.Enabled = false;
         }
         private void ShowUtentiUserControl()
         {
             loginUserControl.Visible = false;
             gestioneUtenti.Visible = true;
+            gestioneAccessiUserControl.Visible = false;
             logoutMenuItem.Enabled = true;
+            datiMenuItem.Enabled = true;
+        }
+
+        private void ShowAccessiUserControl()
+        {
+            loginUserControl.Visible = false;
+            gestioneUtenti.Visible = false;
+            gestioneAccessiUserControl.Visible = true;
+            logoutMenuItem.Enabled = true;
+            datiMenuItem.Enabled = true;
+        }
+
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Davide Luppoli - Progetto Winforms");
+        }
+
+        private void gestioneUtentiMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowUtentiUserControl();
+        }
+
+        private void gestioneAccessiMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAccessiUserControl();
         }
     }
 }

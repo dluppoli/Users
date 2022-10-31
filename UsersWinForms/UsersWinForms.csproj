@@ -57,6 +57,12 @@
     <Compile Include="EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestioneAccessiUserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GestioneAccessiUserControl1.Designer.cs">
+      <DependentUpon>GestioneAccessiUserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestioneAccessiUserControl1.resx">
+      <DependentUpon>GestioneAccessiUserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUserControl.resx">
       <DependentUpon>LoginUserControl.cs</DependentUpon>

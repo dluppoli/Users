@@ -32,15 +32,23 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestioneUtenti = new UsersWinForms.GestioneUtenti();
+            this.datiMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestioneUtentiMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestioneAccessiMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginUserControl = new UsersWinForms.LoginUserControl();
+            this.gestioneUtenti = new UsersWinForms.GestioneUtenti();
+            this.gestioneAccessiUserControl = new UsersWinForms.GestioneAccessiUserControl1();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.datiMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(864, 24);
@@ -70,6 +78,52 @@
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
+            // datiMenuItem
+            // 
+            this.datiMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestioneUtentiMenuItem,
+            this.gestioneAccessiMenuItem});
+            this.datiMenuItem.Name = "datiMenuItem";
+            this.datiMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.datiMenuItem.Text = "Dati";
+            // 
+            // gestioneUtentiMenuItem
+            // 
+            this.gestioneUtentiMenuItem.Name = "gestioneUtentiMenuItem";
+            this.gestioneUtentiMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestioneUtentiMenuItem.Text = "Gestione utenti";
+            this.gestioneUtentiMenuItem.Click += new System.EventHandler(this.gestioneUtentiMenuItem_Click);
+            // 
+            // gestioneAccessiMenuItem
+            // 
+            this.gestioneAccessiMenuItem.Name = "gestioneAccessiMenuItem";
+            this.gestioneAccessiMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestioneAccessiMenuItem.Text = "Gestione accessi";
+            this.gestioneAccessiMenuItem.Click += new System.EventHandler(this.gestioneAccessiMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(24, 20);
+            this.toolStripMenuItem1.Text = "?";
+            // 
+            // aboutMenuItem
+            // 
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutMenuItem.Text = "About";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
+            // 
+            // loginUserControl
+            // 
+            this.loginUserControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.loginUserControl.Location = new System.Drawing.Point(141, 99);
+            this.loginUserControl.Name = "loginUserControl";
+            this.loginUserControl.Size = new System.Drawing.Size(575, 286);
+            this.loginUserControl.TabIndex = 1;
+            // 
             // gestioneUtenti
             // 
             this.gestioneUtenti.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -84,19 +138,23 @@
             this.gestioneUtenti.TabIndex = 2;
             this.gestioneUtenti.UsersList = null;
             // 
-            // loginUserControl
+            // gestioneAccessiUserControl
             // 
-            this.loginUserControl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginUserControl.Location = new System.Drawing.Point(141, 99);
-            this.loginUserControl.Name = "loginUserControl";
-            this.loginUserControl.Size = new System.Drawing.Size(575, 286);
-            this.loginUserControl.TabIndex = 1;
+            this.gestioneAccessiUserControl.AccessiList = null;
+            this.gestioneAccessiUserControl.Location = new System.Drawing.Point(0, 27);
+            this.gestioneAccessiUserControl.Name = "gestioneAccessiUserControl";
+            this.gestioneAccessiUserControl.SearchUtenteIndex = -1;
+            this.gestioneAccessiUserControl.Size = new System.Drawing.Size(864, 467);
+            this.gestioneAccessiUserControl.SoloAccessiFalliti = false;
+            this.gestioneAccessiUserControl.TabIndex = 3;
+            this.gestioneAccessiUserControl.Utenti = null;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 488);
+            this.Controls.Add(this.gestioneAccessiUserControl);
             this.Controls.Add(this.loginUserControl);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.gestioneUtenti);
@@ -119,5 +177,11 @@
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
         private LoginUserControl loginUserControl;
         private GestioneUtenti gestioneUtenti;
+        private System.Windows.Forms.ToolStripMenuItem datiMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestioneUtentiMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestioneAccessiMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
+        private GestioneAccessiUserControl1 gestioneAccessiUserControl;
     }
 }

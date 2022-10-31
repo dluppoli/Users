@@ -143,5 +143,10 @@ namespace UsersWinForms
             edit.ShowDialog();
             LoadGridData();
         }
+
+        private void GestioneUtenti_VisibleChanged(object sender, EventArgs e)
+        {
+            LoadGridData();
+        }
     }
 }

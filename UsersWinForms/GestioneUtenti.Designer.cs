@@ -146,7 +146,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.gridUtenti);
             this.Controls.Add(this.btnNuovo);
             this.Controls.Add(this.lblSesso);
@@ -157,8 +156,9 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lblTitolo);
             this.Name = "GestioneUtenti";
-            this.Text = "GestioneUtenti";
+            this.Size = new System.Drawing.Size(800, 450);
             this.Load += new System.EventHandler(this.GestioneUtenti_Load);
+            this.VisibleChanged += new System.EventHandler(this.GestioneUtenti_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gridUtenti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
