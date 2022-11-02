@@ -150,7 +150,7 @@
             this.pnlPasswordDimenticata.Controls.Add(this.btnOk);
             this.pnlPasswordDimenticata.Controls.Add(this.Mail);
             this.pnlPasswordDimenticata.Controls.Add(this.lblMail);
-            this.pnlPasswordDimenticata.Location = new System.Drawing.Point(14, 38);
+            this.pnlPasswordDimenticata.Location = new System.Drawing.Point(17, 38);
             this.pnlPasswordDimenticata.Name = "pnlPasswordDimenticata";
             this.pnlPasswordDimenticata.Size = new System.Drawing.Size(546, 222);
             this.pnlPasswordDimenticata.TabIndex = 8;
@@ -194,16 +194,15 @@
             this.lblMail.TabIndex = 0;
             this.lblMail.Text = "Inserisci la tua mail. Ti invieremo una mail di recupero password.";
             // 
-            // Form1
+            // LoginUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 286);
             this.Controls.Add(this.pnlPasswordDimenticata);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.Titolo);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "LoginUserControl";
+            this.Size = new System.Drawing.Size(575, 286);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
