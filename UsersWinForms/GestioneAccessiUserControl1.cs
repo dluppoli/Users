@@ -27,15 +27,15 @@ namespace UsersWinForms
             } 
         }
 
-        public int SearchUtenteIndex
+        public int SearchUtenteId
         {
             get
             {
-                return cmbUtente.SelectedIndex;
+                return (int)(cmbUtente.SelectedValue ?? -1);
             }
             set
             {
-                cmbUtente.SelectedIndex = value;
+                cmbUtente.SelectedValue = value;
             }
         }
 
@@ -74,19 +74,20 @@ namespace UsersWinForms
         private void GestioneAccessiUserControl1_Load(object sender, EventArgs e)
         {
             if (Site != null && Site.DesignMode) return;
-            Utenti = Users.GetAll();
             LoadGridData();
-            SearchUtenteIndex = -1;
 
             cmbUtente.DisplayMember = "Lastname";
             cmbUtente.ValueMember = "Id";
+            Utenti = Users.GetAll();
+            SearchUtenteId = -1;
+
             gridAccessi.Columns["UserId"].Visible = false;
         }
 
         private void LoadGridData()
         {
             AccessiList = Logins.FindAll(u =>
-                u.UserId == SearchUtenteIndex && (!SoloAccessiFalliti || !u.LoginSuccessfull) );
+                u.UserId == SearchUtenteId && (!SoloAccessiFalliti || !u.LoginSuccessfull) );
         }
 
         private void chkSoloFalliti_CheckedChanged(object sender, EventArgs e)

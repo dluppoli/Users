@@ -143,7 +143,7 @@
             this.gestioneAccessiUserControl.AccessiList = null;
             this.gestioneAccessiUserControl.Location = new System.Drawing.Point(0, 27);
             this.gestioneAccessiUserControl.Name = "gestioneAccessiUserControl";
-            this.gestioneAccessiUserControl.SearchUtenteIndex = -1;
+            this.gestioneAccessiUserControl.SearchUtenteId = -1;
             this.gestioneAccessiUserControl.Size = new System.Drawing.Size(864, 467);
             this.gestioneAccessiUserControl.SoloAccessiFalliti = false;
             this.gestioneAccessiUserControl.TabIndex = 3;
