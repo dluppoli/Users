@@ -18,7 +18,7 @@ namespace UsersWpf
     /// <summary>
     /// Interaction logic for UsersView.xaml
     /// </summary>
-    public partial class UsersView : Window
+    public partial class UsersView : Page
     {
         private UsersViewModel vm;
         public UsersView()

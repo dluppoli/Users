@@ -24,5 +24,10 @@ namespace UsersWpf
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationFrame.Navigate(new LoginView());
+        }
     }
 }

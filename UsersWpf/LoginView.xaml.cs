@@ -18,7 +18,7 @@ namespace UsersWpf
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class LoginView : Page
     {
         LoginViewModel vm;
         public LoginView()
@@ -31,7 +31,8 @@ namespace UsersWpf
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (vm.Login())
-                MessageBox.Show("Login corretto");
+                //MessageBox.Show("Login corretto");
+                NavigationService.Navigate(new UsersView());
             else
                 MessageBox.Show("Login errato");
         }
