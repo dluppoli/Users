@@ -1,0 +1,41 @@
+﻿<Window x:Class="UsersWpf.UsersView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UsersWpf"
+        mc:Ignorable="d"
+        Title="UsersView" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource TitleLabel}">Utenti</Label>
+        <Button Grid.Row="0" Grid.Column="4" Margin="0 10">Nuovo utente</Button>
+
+        <Label Grid.Row="1" Grid.Column="0">Filtra per nome</Label>
+        <Label Grid.Row="1" Grid.Column="2">Filtra per sesso</Label>
+
+        <TextBox Text="{Binding FiltraNome}" Grid.Row="2" Grid.Column="0"/>
+        <ComboBox ItemsSource="{Binding ListaSessi}" SelectedItem="{Binding FiltraSessa}" Grid.Row="2" Grid.Column="2"/>
+        <Button Grid.Row="2" Grid.Column="4">Azzera filtri</Button>
+
+        <DataGrid ItemsSource="{Binding DatiUtenti}" AutoGenerateColumns="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

@@ -24,7 +24,7 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Login</Label>
+        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Style="{StaticResource TitleLabel}" HorizontalAlignment="Center">Login</Label>
         <Label Grid.Column="1" Grid.Row="1">Username</Label>
         <Label Grid.Column="1" Grid.Row="4">Password</Label>
 
