@@ -84,6 +84,9 @@ namespace UsersClassLibrary.Controllers
 
         public static bool VerificaCredenziali(string u, string p)
         {
+            if (u == null || p == null) return false;
+            if (string.IsNullOrEmpty(u) || string.IsNullOrEmpty(p)) return false;
+
             User user = Find(q => q.Username.ToLower() == u.ToLower() );
 
             if (user != null && user.Password == p)

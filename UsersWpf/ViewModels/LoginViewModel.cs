@@ -8,7 +8,7 @@ namespace UsersWpf.ViewModels
 {
     internal class LoginViewModel : BaseViewModel
     {
-		private string _username;
+		private string _username="";
 
 		public string Username
 		{
@@ -16,7 +16,7 @@ namespace UsersWpf.ViewModels
 			set { _username = value; NotifyPropertyChanged("Username"); }
 		}
 
-		private string _password;
+		private string _password="";
 
 		public string Password
 		{
@@ -34,7 +34,7 @@ namespace UsersWpf.ViewModels
 
 		public bool Login()
 		{
-			return UsersClassLibrary.Controllers.Users.VerificaCredenziali(Username, Password);
+			return UsersClassLibrary.Controllers.Users.VerificaCredenziali(Username ?? "", Password ?? "");
 		}
 	}
 }
