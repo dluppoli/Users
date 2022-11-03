@@ -1,0 +1,61 @@
+﻿<Window x:Class="UsersWpf.EditUserView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UsersWpf"
+        mc:Ignorable="d"
+        Title="EditUserView" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource TitleLabel}">Nuovo Utente</Label>
+
+        <Label Grid.Row="1" Grid.Column="0">Id</Label>
+        <Label Grid.Row="1" Grid.Column="2">Nome</Label>
+        <Label Grid.Row="1" Grid.Column="4">Cognome</Label>
+        <TextBox Grid.Row="2" Grid.Column="0" />
+        <TextBox Grid.Row="2" Grid.Column="2" />
+        <TextBox Grid.Row="2" Grid.Column="4" />
+
+        <Label Grid.Row="4" Grid.Column="0">Età</Label>
+        <Label Grid.Row="4" Grid.Column="2">Sesso</Label>
+        <Label Grid.Row="4" Grid.Column="4">Email</Label>
+        <TextBox Grid.Row="5" Grid.Column="0" />
+        <ComboBox Grid.Row="5" Grid.Column="2" />
+        <TextBox Grid.Row="5" Grid.Column="4" />
+
+        <Label Grid.Row="7" Grid.Column="0">Username</Label>
+        <Label Grid.Row="7" Grid.Column="2">Password</Label>
+        <Label Grid.Row="7" Grid.Column="4">Nascita</Label>
+        <TextBox Grid.Row="8" Grid.Column="0" />
+        <TextBox Grid.Row="8" Grid.Column="2" />
+        <DatePicker Grid.Row="8" Grid.Column="4" />
+
+        <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="100">Salva</Button>
+            <Button Margin="10 0 0 0" Width="100">Annulla</Button>
+        </StackPanel>
+    </Grid>
+</Window>
