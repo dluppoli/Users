@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,9 @@ namespace UsersWpf.ViewModels
 			set { _filtraNome = value; NotifyPropertyChanged("FiltraNome"); LoadData(); }
 		}
 
-		private List<string> _listaSessi;
+		private ObservableCollection<string> _listaSessi;
 
-		public List<string> ListaSessi
+		public ObservableCollection<string> ListaSessi
 		{
 			get { return _listaSessi; }
 			set { _listaSessi = value; NotifyPropertyChanged("ListaSessi"); }
@@ -44,7 +45,7 @@ namespace UsersWpf.ViewModels
 
 		public UsersViewModel()
 		{
-			ListaSessi = Users.GetGenders();
+			ListaSessi = new ObservableCollection<string>(Users.GetGenders());
 			DatiUtenti = Users.GetAll();
 		}
 
@@ -61,5 +62,12 @@ namespace UsersWpf.ViewModels
 			FiltraNome = "";
 			FiltraSesso = null;
 		}
-	}
+
+        public void NewUser()
+        {
+            EditUserView editUser = new EditUserView();
+            editUser.ShowDialog();
+			LoadData();
+        }
+    }
 }

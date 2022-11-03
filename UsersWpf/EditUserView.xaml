@@ -35,27 +35,27 @@
         <Label Grid.Row="1" Grid.Column="0">Id</Label>
         <Label Grid.Row="1" Grid.Column="2">Nome</Label>
         <Label Grid.Row="1" Grid.Column="4">Cognome</Label>
-        <TextBox Grid.Row="2" Grid.Column="0" />
-        <TextBox Grid.Row="2" Grid.Column="2" />
-        <TextBox Grid.Row="2" Grid.Column="4" />
+        <TextBox Text="{Binding SelectedUser.Id}" Grid.Row="2" Grid.Column="0" />
+        <TextBox Text="{Binding SelectedUser.FirstName}" Grid.Row="2" Grid.Column="2" />
+        <TextBox Text="{Binding SelectedUser.LastName}" Grid.Row="2" Grid.Column="4" />
 
         <Label Grid.Row="4" Grid.Column="0">Età</Label>
         <Label Grid.Row="4" Grid.Column="2">Sesso</Label>
         <Label Grid.Row="4" Grid.Column="4">Email</Label>
-        <TextBox Grid.Row="5" Grid.Column="0" />
-        <ComboBox Grid.Row="5" Grid.Column="2" />
-        <TextBox Grid.Row="5" Grid.Column="4" />
+        <TextBox Text="{Binding SelectedUser.Age}" Grid.Row="5" Grid.Column="0" />
+        <ComboBox ItemsSource="{Binding ListaSessi}" SelectedItem="{Binding SelectedUser.Gender}" Grid.Row="5" Grid.Column="2" />
+        <TextBox Text="{Binding SelectedUser.Email}" Grid.Row="5" Grid.Column="4" />
 
         <Label Grid.Row="7" Grid.Column="0">Username</Label>
         <Label Grid.Row="7" Grid.Column="2">Password</Label>
         <Label Grid.Row="7" Grid.Column="4">Nascita</Label>
-        <TextBox Grid.Row="8" Grid.Column="0" />
-        <TextBox Grid.Row="8" Grid.Column="2" />
-        <DatePicker Grid.Row="8" Grid.Column="4" />
+        <TextBox Text="{Binding SelectedUser.Username}" Grid.Row="8" Grid.Column="0" />
+        <TextBox Text="{Binding SelectedUser.Password}" Grid.Row="8" Grid.Column="2" />
+        <DatePicker SelectedDate="{Binding SelectedUser.BirthDate}" Grid.Row="8" Grid.Column="4" />
 
         <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Width="100">Salva</Button>
-            <Button Margin="10 0 0 0" Width="100">Annulla</Button>
+            <Button Width="100" Click="Button_Click_1">Salva</Button>
+            <Button Margin="10 0 0 0" Width="100" Click="Button_Click">Annulla</Button>
         </StackPanel>
     </Grid>
 </Window>

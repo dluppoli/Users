@@ -32,5 +32,10 @@ namespace UsersWpf
         {
             vm.AzzeraFiltri();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            vm.NewUser();
+        }
     }
 }
