@@ -31,7 +31,7 @@
         <ComboBox ItemsSource="{Binding ListaSessi}" SelectedItem="{Binding FiltraSesso}" Grid.Row="2" Grid.Column="2"/>
         <Button Grid.Row="2" Grid.Column="4" Click="Button_Click">Azzera filtri</Button>
 
-        <DataGrid ItemsSource="{Binding DatiUtenti}" AutoGenerateColumns="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False">
+        <DataGrid ItemsSource="{Binding DatiUtenti}" SelectedItem="{Binding UtenteSelezionato}" AutoGenerateColumns="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>

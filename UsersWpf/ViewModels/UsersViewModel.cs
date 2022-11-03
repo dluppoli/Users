@@ -43,6 +43,14 @@ namespace UsersWpf.ViewModels
 			set { _datiUtenti = value; NotifyPropertyChanged("DatiUtenti"); }
 		}
 
+		private User _utenteSelezionato;
+
+		public User UtenteSelezionato
+		{
+			get { return _utenteSelezionato; }
+			set { _utenteSelezionato = value; NotifyPropertyChanged("UtenteSelezionato"); }
+		}
+
 		public UsersViewModel()
 		{
 			ListaSessi = new ObservableCollection<string>(Users.GetGenders());
@@ -69,5 +77,10 @@ namespace UsersWpf.ViewModels
             editUser.ShowDialog();
 			LoadData();
         }
-    }
+
+		public void EditUser()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
