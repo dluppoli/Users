@@ -28,13 +28,25 @@
         <Label Grid.Row="1" Grid.Column="0">Filtra per nome</Label>
         <Label Grid.Row="1" Grid.Column="2">Filtra per sesso</Label>
 
-        <TextBox Text="{Binding FiltraNome}" Grid.Row="2" Grid.Column="0"/>
-        <ComboBox ItemsSource="{Binding ListaSessi}" SelectedItem="{Binding FiltraSessa}" Grid.Row="2" Grid.Column="2"/>
-        <Button Grid.Row="2" Grid.Column="4">Azzera filtri</Button>
+        <TextBox Text="{Binding FiltraNome, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="0"/>
+        <ComboBox ItemsSource="{Binding ListaSessi}" SelectedItem="{Binding FiltraSesso}" Grid.Row="2" Grid.Column="2"/>
+        <Button Grid.Row="2" Grid.Column="4" Click="Button_Click">Azzera filtri</Button>
 
-        <DataGrid ItemsSource="{Binding DatiUtenti}" AutoGenerateColumns="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5">
+        <DataGrid ItemsSource="{Binding DatiUtenti}" AutoGenerateColumns="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
+                <DataGridTextColumn Header="BirthDate" Binding="{Binding BirthDate}"/>
+
+                <DataGridTextColumn Header="Address" Binding="{Binding Address.Address}"/>
+                <DataGridTextColumn Header="City" Binding="{Binding Address.City}"/>
+                <DataGridTextColumn Header="Postal Code" Binding="{Binding Address.PostalCode}"/>
+                <DataGridTextColumn Header="State" Binding="{Binding Address.State}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

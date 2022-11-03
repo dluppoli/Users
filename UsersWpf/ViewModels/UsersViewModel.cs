@@ -15,7 +15,7 @@ namespace UsersWpf.ViewModels
 		public string FiltraNome
 		{
 			get { return _filtraNome; }
-			set { _filtraNome = value; NotifyPropertyChanged("FiltraNome"); }
+			set { _filtraNome = value; NotifyPropertyChanged("FiltraNome"); LoadData(); }
 		}
 
 		private List<string> _listaSessi;
@@ -31,7 +31,7 @@ namespace UsersWpf.ViewModels
 		public string FiltraSesso
 		{
 			get { return _filtraSesso; }
-			set { _filtraSesso = value; NotifyPropertyChanged("FiltraSesso"); }
+			set { _filtraSesso = value; NotifyPropertyChanged("FiltraSesso"); LoadData(); }
 		}
 
 		private List<User> _datiUtenti;
@@ -48,5 +48,18 @@ namespace UsersWpf.ViewModels
 			DatiUtenti = Users.GetAll();
 		}
 
+		private void LoadData()
+		{
+			DatiUtenti = Users.FindAll(u =>
+				( string.IsNullOrEmpty(FiltraNome) || u.FirstName.Contains(FiltraNome) || u.LastName.Contains(FiltraNome) ) &&
+				( string.IsNullOrEmpty(FiltraSesso) || u.Gender == FiltraSesso )
+			); 
+		}
+
+		public void AzzeraFiltri()
+		{
+			FiltraNome = "";
+			FiltraSesso = null;
+		}
 	}
 }

@@ -27,5 +27,10 @@ namespace UsersWpf
             vm = new UsersViewModel();
             DataContext = vm;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            vm.AzzeraFiltri();
+        }
     }
 }
