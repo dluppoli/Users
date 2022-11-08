@@ -10,6 +10,9 @@ namespace UsersWpf.ViewModels
 {
     internal class EditUserViewModel : BaseViewModel
     {
+		private bool isNew;
+
+		private int _selectedUserId;
 		private User _selectedUser;
 
 		public User SelectedUser
@@ -26,15 +29,48 @@ namespace UsersWpf.ViewModels
 			set { _listaSessi = value; NotifyPropertyChanged("ListaSessi"); }
 		}
 
-		public EditUserViewModel()
+		private string _titleLabel;
+
+		public string TitleLabel
 		{
-			SelectedUser = new User();
-			ListaSessi = Users.GetGenders();
+			get { return _titleLabel; }
+			set { _titleLabel = value; NotifyPropertyChanged("TitleLabel"); }
 		}
 
+		public EditUserViewModel()
+		{
+			isNew = true;
+			SelectedUser = new User();
+			ListaSessi = Users.GetGenders();
+			TitleLabel = "Nuovo Utente";
+		}
+
+		public EditUserViewModel(User u)
+		{
+			isNew = false;
+			_selectedUserId = u.Id;
+			SelectedUser = new User
+			{
+				Id = u.Id,
+				FirstName = u.FirstName,
+				LastName = u.LastName,
+				Email = u.Email,
+				Username = u.Username,
+				Password = u.Password,
+				BirthDate = u.BirthDate,
+				Age = u.Age,
+				Gender = u.Gender,
+				Address = u.Address
+			};
+            ListaSessi = Users.GetGenders();
+            TitleLabel = $"Modifica Utente {_selectedUserId}";
+        }
 		public void Save()
 		{
-			Users.Add(SelectedUser);
+			if (isNew)
+				Users.Add(SelectedUser);
+			else
+				Users.Update(_selectedUserId, SelectedUser);
 		}
 	}
 }

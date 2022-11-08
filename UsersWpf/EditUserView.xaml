@@ -30,7 +30,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource TitleLabel}">Nuovo Utente</Label>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource TitleLabel}" Content="{Binding TitleLabel}"/>
 
         <Label Grid.Row="1" Grid.Column="0">Id</Label>
         <Label Grid.Row="1" Grid.Column="2">Nome</Label>

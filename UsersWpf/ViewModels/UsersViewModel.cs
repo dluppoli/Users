@@ -80,7 +80,9 @@ namespace UsersWpf.ViewModels
 
 		public void EditUser()
 		{
-			throw new NotImplementedException();
-		}
+            EditUserView editUser = new EditUserView(UtenteSelezionato);
+            editUser.ShowDialog();
+            LoadData();
+        }
 	}
 }

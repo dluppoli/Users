@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UsersClassLibrary.Models;
 using UsersWpf.ViewModels;
 
 namespace UsersWpf
@@ -26,6 +27,13 @@ namespace UsersWpf
         {
             InitializeComponent();
             vm = new EditUserViewModel();
+            DataContext = vm;
+        }
+
+        public EditUserView(User u) 
+        {
+            InitializeComponent();
+            vm = new EditUserViewModel(u);
             DataContext = vm;
         }
 
