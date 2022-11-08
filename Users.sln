@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersClassLibrary", "UsersC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersWpfCaliburn", "UsersWpfCaliburn\UsersWpfCaliburn.csproj", "{83693B47-C6C2-4DE4-BCFC-9A03DD43A68E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersAdo", "UsersAdo\UsersAdo.csproj", "{4227B3CB-341A-4A3C-99F6-75416B02662B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{83693B47-C6C2-4DE4-BCFC-9A03DD43A68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83693B47-C6C2-4DE4-BCFC-9A03DD43A68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83693B47-C6C2-4DE4-BCFC-9A03DD43A68E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4227B3CB-341A-4A3C-99F6-75416B02662B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4227B3CB-341A-4A3C-99F6-75416B02662B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4227B3CB-341A-4A3C-99F6-75416B02662B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4227B3CB-341A-4A3C-99F6-75416B02662B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
