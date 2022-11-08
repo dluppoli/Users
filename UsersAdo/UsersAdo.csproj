@@ -95,5 +95,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UsersClassLibrary\UsersClassLibrary.csproj">
+      <Project>{19ad5de5-8e66-440c-b916-c28961555ac2}</Project>
+      <Name>UsersClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
