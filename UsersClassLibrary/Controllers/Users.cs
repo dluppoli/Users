@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -87,7 +88,33 @@ namespace UsersClassLibrary.Controllers
             if (u == null || p == null) return false;
             if (string.IsNullOrEmpty(u) || string.IsNullOrEmpty(p)) return false;
 
-            User user = Find(q => q.Username.ToLower() == u.ToLower() );
+            string connectionString = @"Server=E80\SQLEXPRESS;Database=Users;Integrated Security=True;TrustServerCertificate=True";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = connection;
+                    command.CommandText = "SELECT COUNT(*) AS UtentiValidi FROM Users";
+                    command.CommandText += " WHERE Username=@u AND Password=@p";
+
+                    command.Parameters.AddWithValue("@u", u);
+                    command.Parameters.AddWithValue("@p", p);
+
+                    //return ((int)command.ExecuteScalar()) > 0;
+                    int utentiTrovati = (int)command.ExecuteScalar();
+                    return utentiTrovati == 1;
+                }
+                catch(Exception e)
+                {
+                    throw;
+                }
+            }
+
+
+            /*User user = Find(q => q.Username.ToLower() == u.ToLower() );
 
             if (user != null && user.Password == p)
             {
@@ -103,7 +130,7 @@ namespace UsersClassLibrary.Controllers
             {
                 Logins.Add(new Login(-1, false, DateTime.Now));
                 return false;
-            }
+            }*/
         }
 
         public static bool InviaMailDiRecupero(string m)
