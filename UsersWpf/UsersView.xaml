@@ -40,7 +40,7 @@
                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
-                <DataGridTextColumn Header="BirthDate" Binding="{Binding BirthDate}"/>
+                <DataGridTextColumn Header="BirthDate" Binding="{Binding BirthDate, StringFormat='dd-MM-yyyy'}"/>
 
                 <DataGridTextColumn Header="Address" Binding="{Binding Address.Address}"/>
                 <DataGridTextColumn Header="City" Binding="{Binding Address.City}"/>

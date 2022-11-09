@@ -66,27 +66,7 @@ namespace UsersClassLibrary.Controllers
                         //5 - per ogni riga della query creo un oggetto User e aggiungo alla lista
                         while (reader.Read())
                         {
-                            User u = new User
-                            {
-                                Id = (int)reader["Id"],
-                                FirstName = (string)reader["FirstName"],
-                                LastName = (string)reader["LastName"],
-                                Age = (int)reader["Age"],
-                                Gender = (string)reader["Gender"],
-                                Email = (string)reader["Email"],
-                                Username = (string)reader["Username"],
-                                Password = (string)reader["Password"],
-                                BirthDate = (DateTime)reader["BirthDate"],
-                                Address = new FullAddress 
-                                {
-                                    Address = (string)reader["Address"],
-                                    City = (string)reader["City"],
-                                    PostalCode = (string)reader["PostalCode"],
-                                    State = (string)reader["State"],
-                                }
-                            };
-
-                            retVal.Add(u);
+                            retVal.Add(ReadToUser(reader));
                         }
                     }
                     //6 - Restituisco la lista
@@ -99,20 +79,122 @@ namespace UsersClassLibrary.Controllers
             }
         }
 
-        public static User Find(Predicate<User> condizione)
+        public static User Find(int Id)
+        {
+            //1 - Mi creo l'oggetto da restituire
+            User retVal = null;
+
+            //2 - Mi connetto al db e apro la connessione
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    //3 - Compongo la query sql (con i parametri)
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "SELECT TOP(1) * FROM Users ";
+                    cmd.CommandText += "WHERE Id=@Id";
+
+                    cmd.Parameters.AddWithValue("@Id", Id);
+
+                    //4 - Ottengo il data reader
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        //5 - per ogni riga della query creo un oggetto User e aggiungo alla lista
+                        while (reader.Read())
+                        {
+                            retVal = ReadToUser(reader);
+                        }
+                    }
+                    //6 - Restituisco la lista
+                    return retVal;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public static User Find(string mail)
+        {
+            //1 - Mi creo l'oggetto da restituire
+            User retVal = null;
+
+            //2 - Mi connetto al db e apro la connessione
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    //3 - Compongo la query sql (con i parametri)
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "SELECT TOP(1) * FROM Users ";
+                    cmd.CommandText += "WHERE Email=@mail";
+
+                    cmd.Parameters.AddWithValue("@mail", mail);
+
+                    //4 - Ottengo il data reader
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        //5 - per ogni riga della query creo un oggetto User e aggiungo alla lista
+                        while (reader.Read())
+                        {
+                            retVal = ReadToUser(reader);
+                        }
+                    }
+                    //6 - Restituisco l'oggetto
+                    return retVal;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        /*public static User Find(Predicate<User> condizione)
         {
             return GetAll().Find(condizione);
-        }
+        }*/
 
         public static void Add(User u)
         {
-            GetAll().Add(u);
+            //GetAll().Add(u);
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+
+                    cmd.CommandText = "INSERT INTO Users VALUES(";
+                    cmd.CommandText += "@Id,@FirstName,@LastName,@Age,";
+                    cmd.CommandText += "@Gender,@Email,@Username,@Password,";
+                    cmd.CommandText += "@BirthDate,@Address,@City,@PostalCode,@State";
+                    cmd.CommandText += ")";
+
+                    cmd.Parameters.AddRange(UserToParameters(u));
+                    
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
 
         public static bool Update(int id, User u)
         {
             if (u.Id != id) return false;
-            User candidate = Find(q => q.Id == id);
+            /*User candidate = Find(id);
             if (candidate == null) return false;
 
             candidate.FirstName = u.FirstName;
@@ -124,7 +206,32 @@ namespace UsersClassLibrary.Controllers
             candidate.BirthDate = u.BirthDate;
             candidate.Gender = u.Gender;
 
-            return true;
+            return true;*/
+            //GetAll().Add(u);
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+
+                    cmd.CommandText = "UPDATE Users SET ";
+                    cmd.CommandText += "FirstName=@FirstName,LastName=@LastName,Age=@Age,";
+                    cmd.CommandText += "Gender=@Gender,Email=@Email,Username=@Username,Password=@Password,";
+                    cmd.CommandText += "BirthDate=@BirthDate,Address=@Address,City=@City,PostalCode=@PostalCode,State=@State ";
+                    cmd.CommandText += "WHERE Id=@Id";
+
+                    cmd.Parameters.AddRange(UserToParameters(u));
+
+                    return cmd.ExecuteNonQuery() == 1;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
         public static List<string> GetGenders()
         {
@@ -164,7 +271,7 @@ namespace UsersClassLibrary.Controllers
                 try
                 {
                     connection.Open();
-
+                    
                     SqlCommand command = new SqlCommand();
                     command.Connection = connection;
                     command.CommandText = "SELECT COUNT(*) AS UtentiValidi FROM Users";
@@ -209,7 +316,51 @@ namespace UsersClassLibrary.Controllers
 
         public static bool InviaMailDiRecupero(string m)
         {
-            return Find(u => u.Email.ToLower() == m.ToLower()) != null;
+            return Find(m) != null;
+        }
+
+        private static User ReadToUser(SqlDataReader reader)
+        {
+            return new User
+            {
+                Id = (int)reader["Id"],
+                FirstName = (string)reader["FirstName"],
+                LastName = (string)reader["LastName"],
+                //Age = (int)reader["Age"],
+                Age = reader.GetInt32(  reader.GetOrdinal("Age")  ),
+                Gender = (string)reader["Gender"],
+                Email = (string)reader["Email"],
+                Username = (string)reader["Username"],
+                Password = (string)reader["Password"],
+                BirthDate =   reader.IsDBNull(reader.GetOrdinal("BirthDate")) == true ?  DateTime.Today : (DateTime)reader["BirthDate"],
+                Address = new FullAddress
+                {
+                    Address = (string)reader["Address"],
+                    City = (string)reader["City"],
+                    PostalCode = (string)reader["PostalCode"],
+                    State = (string)reader["State"],
+                }
+            };
+        }
+
+        private static SqlParameter[] UserToParameters(User u)
+        {
+            SqlParameter[] sp = new SqlParameter[] {
+                new SqlParameter("@Id", u.Id),
+                new SqlParameter("@FirstName", u.FirstName),
+                new SqlParameter("@LastName", u.LastName),
+                new SqlParameter("@Age", u.Age),
+                new SqlParameter("@Gender", u.Gender),
+                new SqlParameter("@Email", u.Email),
+                new SqlParameter("@Username", u.Username),
+                new SqlParameter("@Password", u.Password),
+                new SqlParameter("@BirthDate", u.BirthDate),
+                new SqlParameter("@Address", u.Address == null ? "" : u.Address.Address),
+                new SqlParameter("@City", u.Address == null ? "" : u.Address.City),
+                new SqlParameter("@PostalCode", u.Address == null ? "" : u.Address.PostalCode),
+                new SqlParameter("@State", u.Address == null ? "" : u.Address.State)
+            };
+            return sp;
         }
     }
 }
