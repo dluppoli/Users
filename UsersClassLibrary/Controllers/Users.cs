@@ -58,7 +58,7 @@ namespace UsersClassLibrary.Controllers
                     cmd.CommandText += "AND Gender LIKE @sex";
 
                     cmd.Parameters.AddWithValue("@name", $"%{nome}%");
-                    cmd.Parameters.AddWithValue("@sex", $"%{sex}%");
+                    cmd.Parameters.AddWithValue("@sex", $"{sex}%");
 
                     //4 - Ottengo il data reader
                     using (SqlDataReader reader = cmd.ExecuteReader())
