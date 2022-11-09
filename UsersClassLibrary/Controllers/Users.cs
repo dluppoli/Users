@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,14 @@ namespace UsersClassLibrary.Controllers
 {
     public static class Users
     {
+        public static string connectionString
+        {
+            get
+            {
+                return ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
+            }
+        }
+
         private static List<User> _users;
         public static List<User> GetAll()
         {
@@ -24,9 +33,70 @@ namespace UsersClassLibrary.Controllers
             return _users;
         }
 
-        public static List<User> FindAll(Predicate<User> condizione)
+        //public static List<User> FindAll(Predicate<User> condizione)
+        public static List<User> FindAll(string nome, string sex)
         {
-            return GetAll().FindAll(condizione);
+            if (string.IsNullOrWhiteSpace(nome)) nome = "";
+            if (string.IsNullOrWhiteSpace(sex)) sex = "";
+            //return GetAll().FindAll(condizione);
+
+            //1 - Mi creo la lista vuota da restituire
+            List<User> retVal = new List<User>();
+
+            //2 - Mi connetto al db e apro la connessione
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    //3 - Compongo la query sql (con i parametri)
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "SELECT * FROM Users ";
+                    cmd.CommandText += "WHERE (FirstName Like @name OR LastName Like @name) ";
+                    cmd.CommandText += "AND Gender LIKE @sex";
+
+                    cmd.Parameters.AddWithValue("@name", $"%{nome}%");
+                    cmd.Parameters.AddWithValue("@sex", $"%{sex}%");
+
+                    //4 - Ottengo il data reader
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        //5 - per ogni riga della query creo un oggetto User e aggiungo alla lista
+                        while (reader.Read())
+                        {
+                            User u = new User
+                            {
+                                Id = (int)reader["Id"],
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                Age = (int)reader["Age"],
+                                Gender = (string)reader["Gender"],
+                                Email = (string)reader["Email"],
+                                Username = (string)reader["Username"],
+                                Password = (string)reader["Password"],
+                                BirthDate = (DateTime)reader["BirthDate"],
+                                Address = new FullAddress 
+                                {
+                                    Address = (string)reader["Address"],
+                                    City = (string)reader["City"],
+                                    PostalCode = (string)reader["PostalCode"],
+                                    State = (string)reader["State"],
+                                }
+                            };
+
+                            retVal.Add(u);
+                        }
+                    }
+                    //6 - Restituisco la lista
+                    return retVal;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
 
         public static User Find(Predicate<User> condizione)
@@ -88,7 +158,7 @@ namespace UsersClassLibrary.Controllers
             if (u == null || p == null) return false;
             if (string.IsNullOrEmpty(u) || string.IsNullOrEmpty(p)) return false;
 
-            string connectionString = @"Server=E80\SQLEXPRESS;Database=Users;Integrated Security=True;TrustServerCertificate=True";
+            //string connectionString = @"Server=E80\SQLEXPRESS;Database=Users;Integrated Security=True;TrustServerCertificate=True";            
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -99,6 +169,10 @@ namespace UsersClassLibrary.Controllers
                     command.Connection = connection;
                     command.CommandText = "SELECT COUNT(*) AS UtentiValidi FROM Users";
                     command.CommandText += " WHERE Username=@u AND Password=@p";
+
+                    //SqlParameter p1 = new SqlParameter("@u", u);
+                    //command.Parameters.Add(p1);
+                    //command.Parameters.Add(new SqlParameter("@u", u));
 
                     command.Parameters.AddWithValue("@u", u);
                     command.Parameters.AddWithValue("@p", p);
