@@ -1,0 +1,11 @@
+﻿@model UsersAsp.ViewModels.RandomViewModel
+
+<!--<h2>@((string)(ViewData["Titolo"]))</h2>-->
+<!--<h2>@ViewBag.Titolo</h2>-->
+<h2>@Model.Titolo</h2>
+<ul>
+    <li>@Model.User.FirstName</li>
+    <li>@Model.User.LastName</li>
+    <li>@Model.User.City</li>
+</ul>
+
