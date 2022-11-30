@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UsersAsp.Models.Login>
+﻿@model UsersAsp.ViewModels.PaginatedDataViewModel<UsersAsp.Models.Login>
 
 @{
     ViewBag.Title = "Index";
@@ -12,22 +12,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.Data.FirstOrDefault().User.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LoginSuccessful)
+            @Html.DisplayNameFor(model => model.Data.FirstOrDefault().User.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Note)
+            @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.FirstName)
+            @Html.DisplayNameFor(model => model.Data.FirstOrDefault().LoginSuccessful)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data.FirstOrDefault().Note)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Data) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
@@ -38,14 +47,18 @@
             @Html.DisplayFor(modelItem => item.Note)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
 
 </table>
+
+<ul class="pagination">
+    @for(int i=1; i<=Model.Pages; i++)
+    {
+        <li class="@(i==Model.Page ? "active" : "")" >@Html.ActionLink(i.ToString(),"Index",new { page = i},null)</li>
+    }
+</ul>

@@ -27,5 +27,7 @@ namespace UsersAsp.Models
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
+
+        public System.Data.Entity.DbSet<UsersAsp.Models.UserSearch> UserSearches { get; set; }
     }
 }

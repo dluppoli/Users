@@ -36,8 +36,8 @@ namespace UsersAsp.Controllers
             }
         }
 
-        [Route("")]
-        public async Task<ActionResult> Index()
+        //[Route("")]
+        public async Task<ActionResult> Index(string search="")
         {
             //return View();
             //return Content("Questo è un ContentResult");
@@ -49,7 +49,9 @@ namespace UsersAsp.Controllers
             //return new EmptyResult();
             using (var context = new UsersContext())
             {
-                return View(await context.Users.ToListAsync());
+                return View(await context.Users
+                    .Where(q => q.LastName.Contains(search) || q.FirstName.Contains(search))
+                    .ToListAsync());
             }
         }
 
@@ -150,5 +152,27 @@ namespace UsersAsp.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [Route("search")]
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("search")]
+        public async Task<ActionResult> Search(UserSearch s)
+        {
+            using (var context = new UsersContext())
+            {
+                /*var retVal = await context.Users
+                    .Where(q => q.LastName.Contains(s.SearchText) || q.FirstName.Contains(s.SearchText))
+                    .ToListAsync();
+
+                return View("Index", retVal);*/
+                return RedirectToAction("Index",new {search = s.SearchText});
+            }
+        }
+
     }
 }

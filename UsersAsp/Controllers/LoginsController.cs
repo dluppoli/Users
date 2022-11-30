@@ -6,22 +6,45 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using UsersAsp.Models;
+using UsersAsp.ViewModels;
 
 namespace UsersAsp.Controllers
 {
     [RoutePrefix("logins")]
     public class LoginsController : Controller
     {
-        [Route("index")]
-        public async Task<ActionResult> Index()
+        //[Route("index")]
+        /*public ActionResult Index()
         {
+            return RedirectToAction("Index?page=1");
+        }*/
+
+        //[Route("index/{page}")]
+        public async Task<ActionResult> Index(int page=1)
+        {
+            int pageSize = 15;
+
+            if (page < 1) page = 1;
+
             using (var context = new UsersContext())
             {
                 var retVal = await context.Logins
                     .Include("User")
                     .OrderByDescending(ob=>ob.Date)
+                    .Skip( (page-1)*pageSize )
+                    .Take(pageSize)
                     .ToListAsync();
-                return View(retVal);
+
+                int totalPages = await context.Logins.CountAsync();
+                int pages = (int) Math.Ceiling( (double)totalPages / pageSize); 
+
+
+                return View(new PaginatedDataViewModel<Login>
+                {
+                    Page = page,
+                    Pages = pages,
+                    Data = retVal
+                });
             }
         }
 
