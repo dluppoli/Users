@@ -84,5 +84,71 @@ namespace UsersAsp.Controllers
                 });
             }
         }
+
+        [Route("create")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<ActionResult> Create(User u)
+        {
+            //EF di inserimento
+            using (var context = new UsersContext())
+            {
+                context.Users.Add(u);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+        }
+
+        [Route("update/{id}")]
+        public async Task<ActionResult> Update(int id)
+        {
+            using(var context = new UsersContext())
+            {
+                User candidate = await context.Users.FirstOrDefaultAsync(q => q.Id == id);
+                return View(candidate);
+            }
+        }
+
+        [HttpPost]
+        [Route("update/{id}")]
+        public async Task<ActionResult> Update(int id,User u)
+        {
+            using (var context = new UsersContext())
+            {
+                var candidate = await context.Users.FirstOrDefaultAsync(q => q.Id == id);
+                candidate.FirstName = u.FirstName;
+                candidate.LastName = u.LastName;
+                await context.SaveChangesAsync();
+                return RedirectToAction("index");
+            }
+        }
+
+        [Route("delete/{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            using (var context = new UsersContext())
+            {
+                User candidate = await context.Users.FirstOrDefaultAsync(q => q.Id == id);
+                return View(candidate);
+            }
+        }
+
+        [HttpPost]
+        [Route("delete/{id}")]
+        public async Task<ActionResult> DeleteExec(int id)
+        {
+            using (var context = new UsersContext())
+            {
+                User candidate = await context.Users.FirstOrDefaultAsync(q => q.Id == id);
+                context.Users.Remove(candidate);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

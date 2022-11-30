@@ -5,6 +5,7 @@
 }
 
 <h2>Lista utenti</h2>
+@Html.ActionLink("Add new user","Create")
 
 <table class="table">
     <thead>
@@ -12,6 +13,7 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>City</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +23,12 @@
                 <td>@u.LastName</td>
                 <td>@u.FirstName</td>
                 <td>@u.City</td>
+                <td>
+                    <!--<a href="users/update/@u.Id">Edit</a>-->
+                    @Html.ActionLink("Detail", "GetOne", new { id = u.Id }) |
+                    @Html.ActionLink("Edit", "Update", new { id = u.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = u.Id }) 
+                </td>
             </tr>
         }
     </tbody>

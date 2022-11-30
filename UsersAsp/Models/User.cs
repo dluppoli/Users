@@ -14,6 +14,12 @@ namespace UsersAsp.Models
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Logins = new HashSet<Login>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -27,5 +33,8 @@ namespace UsersAsp.Models
         public string City { get; set; }
         public string PostalCode { get; set; }
         public string State { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Login> Logins { get; set; }
     }
 }
